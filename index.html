@@ -11,12 +11,13 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0a0a0a;
             color: #ffffff;
             overflow-x: hidden;
             padding-top: 140px;
         }
+        
         /* Countdown banner - FIXED */
         .deadline-banner {
             position: fixed;
@@ -29,43 +30,62 @@
             font-weight: bold;
             font-size: 14px;
             letter-spacing: 1px;
-            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
             border-bottom: 2px solid #ff0000;
             z-index: 1000;
+            animation: bannerPulse 2s ease-in-out infinite;
         }
+        
+        @keyframes bannerPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5); }
+            50% { box-shadow: 0 4px 30px rgba(255, 0, 0, 0.8); }
+        }
+        
         .deadline-banner i {
             margin-right: 8px;
+            animation: shake 0.5s infinite;
         }
+        
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        
         #countdown {
             display: inline-block;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             padding: 4px 12px;
             border-radius: 4px;
             margin-left: 10px;
             font-family: 'Courier New', monospace;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
+        
         /* Navigation - FIXED */
         .navbar {
             position: fixed;
             top: 45px;
             left: 0;
             right: 0;
-            background-color: #0d0d0d;
+            background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
             padding: 15px 0;
             border-bottom: 2px solid #ff0000;
             border-top: 2px solid #ff0000;
             z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
+        
         .navbar .container {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
+        
         .navbar-brand img {
-            /* ALTERAÇÃO AQUI: Logo muito maior em desktop */
-            height: 120px;          /* Aumentado de 100px para 120px */
+            height: 120px;
             width: auto;
-            max-width: 500px;       /* Aumentado de 400px para 500px */
+            max-width: 500px;
             display: block;
             margin: 0 auto;
             object-fit: contain;
@@ -73,13 +93,16 @@
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             transition: height 0.3s ease;
+            filter: drop-shadow(0 2px 10px rgba(255, 0, 0, 0.3));
         }
+        
         /* Main container */
         .vsl-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
         /* Video wrapper */
         .video-wrapper {
             position: relative;
@@ -87,15 +110,18 @@
             max-width: 900px;
             margin: 0 auto 30px;
             background: #000;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 60px rgba(255, 0, 0, 0.3);
+            border: 2px solid #ff0000;
         }
+        
         .video-wrapper::before {
             content: '';
             display: block;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
         }
+        
         #mainVideo {
             position: absolute;
             top: 0;
@@ -105,7 +131,7 @@
             object-fit: cover;
         }
 
-        /* === ANIMAÇÃO DOS OLHOS WATCHING === */
+        /* Watching eyes animation */
         .watching-eyes {
             position: absolute;
             top: 50%;
@@ -121,6 +147,7 @@
             transition: opacity 0.8s ease;
             z-index: 5;
         }
+        
         .eye {
             width: 120px;
             height: 120px;
@@ -128,8 +155,9 @@
             border-radius: 50%;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.9);
         }
+        
         .pupil {
             width: 50px;
             height: 50px;
@@ -140,8 +168,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             transition: transform 0.1s ease;
-            box-shadow: 0 0 20px #ff0000;
+            box-shadow: 0 0 25px #ff0000;
         }
+        
         .eye:nth-child(1) { animation: blink 8s infinite; }
         .eye:nth-child(2) { animation: blink 8s infinite 3s; }
 
@@ -161,30 +190,35 @@
             right: 12px;
             z-index: 10;
         }
+        
         .live-viewers-badge {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            padding: 4px 10px;
-            border-radius: 12px;
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(255, 0, 0, 0.5);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.7em;
+            gap: 8px;
+            font-size: 0.75em;
             font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
         }
+        
         .live-dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: #ff0000;
             border-radius: 50%;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px #ff0000;
         }
+        
         .viewer-count {
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
+        
         @keyframes pulse {
             0%, 100% {
                 opacity: 1;
@@ -195,19 +229,44 @@
                 transform: scale(0.95);
             }
         }
+        
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
             border-radius: 20px;
             padding: 45px 30px;
             text-align: center;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7);
             border: 2px solid #333;
-            max-width: 450px;
+            max-width: 500px;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .cta-section > * {
+            position: relative;
+            z-index: 1;
+        }
+        
         .cta-section h2 {
-            font-size: 1.8em;
+            font-size: 1.9em;
             margin-bottom: 25px;
             text-transform: uppercase;
             display: flex;
@@ -217,101 +276,145 @@
             line-height: 1.3;
             font-weight: 900;
             flex-wrap: wrap;
+            background: linear-gradient(90deg, #fff 0%, #ff0000 50%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+        
         .star-icon {
             color: #ffd700;
             font-size: 1.3em;
+            animation: sparkle 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px #ffd700);
         }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+        
         .bonus-text {
-            color: #ff0000;
-            font-size: 1em;
-            margin-bottom: 25px;
-            font-weight: bold;
-            line-height: 1.4;
+            background: linear-gradient(90deg, #ff0000 0%, #ff6b00 100%);
+            color: #fff;
+            font-size: 1.05em;
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.5;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
+        
         .payment-button {
             display: inline-block;
             background: linear-gradient(90deg, #ff0000 0%, #cc0000 100%);
             color: #ffffff;
-            padding: 18px 50px;
+            padding: 20px 50px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1.1em;
-            font-weight: bold;
+            font-size: 1.15em;
+            font-weight: 900;
             text-transform: uppercase;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 8px 30px rgba(255, 0, 0, 0.5);
             margin-bottom: 25px;
             border: none;
             cursor: pointer;
+            letter-spacing: 1px;
+            animation: buttonPulse 2s ease-in-out infinite;
         }
+        
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         .payment-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 0, 0, 0.6);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 0, 0, 0.7);
         }
+        
         .payment-button::before {
             content: '🔒 ';
             margin-right: 10px;
         }
+        
         .payment-methods {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 30px;
-            padding: 25px 20px;
-            background: rgba(0, 0, 0, 0.3);
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
             flex-wrap: wrap;
+            border: 1px solid rgba(255, 0, 0, 0.2);
         }
+        
         .payment-method {
             text-align: center;
-            color: #aaa;
-            font-size: 0.8em;
+            color: #ccc;
+            font-size: 0.85em;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transition: transform 0.3s ease;
         }
+        
+        .payment-method:hover {
+            transform: translateY(-5px);
+        }
+        
         .payment-method-icon {
-            font-size: 2.2em;
+            font-size: 2.5em;
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 45px;
+            height: 50px;
             font-weight: normal;
+            filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
         }
+        
         .payment-method-name {
             white-space: nowrap;
             font-size: 1em;
-            font-weight: 500;
+            font-weight: 600;
         }
+        
         .telegram-container {
-            margin-top: 20px;
+            margin-top: 25px;
         }
+        
         .telegram-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             background: linear-gradient(90deg, #0088cc 0%, #006699 100%);
             color: #ffffff;
-            padding: 15px 40px;
+            padding: 18px 45px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1em;
-            font-weight: bold;
+            font-size: 1.05em;
+            font-weight: 700;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 136, 204, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
+        
         .telegram-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 136, 204, 0.6);
+            box-shadow: 0 12px 35px rgba(0, 136, 204, 0.7);
         }
+        
         .telegram-icon {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -319,40 +422,199 @@
             justify-content: center;
             position: relative;
         }
+        
         .telegram-icon::before {
             content: '';
             position: absolute;
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 4px 0 4px 8px;
+            border-width: 5px 0 5px 9px;
             border-color: transparent transparent transparent #0088cc;
             transform: rotate(-45deg);
-            left: 9px;
-            top: 8px;
+            left: 10px;
+            top: 9px;
         }
-        /* Responsive */
+
+        /* MOBILE OPTIMIZATIONS */
         @media (max-width: 768px) {
-            body {
-                padding-top: 130px;
-            }
-            .navbar-brand img {
-                height: 70px; /* Um pouco maior que antes no tablet/mobile */
-            }
-            .cta-section {
-                padding: 40px 20px;
-                max-width: 95%;
-            }
-            /* ... resto igual ... */
-        }
-        @media (max-width: 480px) {
             body {
                 padding-top: 120px;
             }
-            .navbar-brand img {
-                height: 55px; /* Ainda visível e maior que o original */
+            
+            .deadline-banner {
+                font-size: 12px;
+                padding: 10px 5px;
             }
-            /* ... resto igual ... */
+            
+            #countdown {
+                padding: 3px 8px;
+                font-size: 0.95em;
+            }
+            
+            .navbar {
+                padding: 12px 0;
+            }
+            
+            .navbar-brand img {
+                height: 70px;
+                max-width: 90%;
+            }
+            
+            .vsl-container {
+                padding: 25px 15px;
+            }
+            
+            .video-wrapper {
+                border-radius: 10px;
+                margin-bottom: 25px;
+            }
+            
+            .watching-eyes {
+                width: 200px;
+                height: 100px;
+            }
+            
+            .eye {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .pupil {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .live-viewers {
+                bottom: 35px;
+                right: 8px;
+            }
+            
+            .live-viewers-badge {
+                padding: 5px 10px;
+                font-size: 0.7em;
+            }
+            
+            .cta-section {
+                padding: 35px 20px;
+                max-width: 100%;
+                border-radius: 15px;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+                gap: 10px;
+            }
+            
+            .star-icon {
+                font-size: 1.1em;
+            }
+            
+            .bonus-text {
+                font-size: 0.95em;
+                padding: 12px 15px;
+                margin-bottom: 25px;
+            }
+            
+            .payment-button {
+                padding: 16px 35px;
+                font-size: 1em;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .payment-methods {
+                gap: 20px;
+                padding: 25px 15px;
+                flex-direction: row;
+            }
+            
+            .payment-method {
+                flex: 1;
+                min-width: 80px;
+            }
+            
+            .payment-method-icon {
+                font-size: 2em;
+                height: 40px;
+            }
+            
+            .payment-method-name {
+                font-size: 0.9em;
+            }
+            
+            .telegram-button {
+                padding: 15px 30px;
+                font-size: 0.95em;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .telegram-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 110px;
+            }
+            
+            .deadline-banner {
+                font-size: 11px;
+                padding: 8px 5px;
+            }
+            
+            .navbar-brand img {
+                height: 55px;
+            }
+            
+            .vsl-container {
+                padding: 20px 12px;
+            }
+            
+            .video-wrapper {
+                border-radius: 8px;
+            }
+            
+            .cta-section {
+                padding: 30px 18px;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.3em;
+                line-height: 1.4;
+            }
+            
+            .bonus-text {
+                font-size: 0.9em;
+                padding: 10px 12px;
+            }
+            
+            .payment-button {
+                padding: 14px 30px;
+                font-size: 0.95em;
+            }
+            
+            .payment-methods {
+                padding: 20px 12px;
+                gap: 15px;
+            }
+            
+            .payment-method-icon {
+                font-size: 1.8em;
+            }
+            
+            .payment-method-name {
+                font-size: 0.85em;
+            }
+            
+            .telegram-button {
+                padding: 14px 25px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -361,6 +623,7 @@
     <div class="deadline-banner">
         <i>⏰</i> LIMITED OFFER: EXPIRES IN <span id="countdown">04:41</span>
     </div>
+
     <!-- Navbar with logo - FIXED -->
     <nav class="navbar">
         <div class="container">
@@ -369,8 +632,6 @@
             </a>
         </div>
     </nav>
-    <!-- resto do body permanece exatamente igual -->
-    <!-- ... (todo o conteúdo que você já tinha) ... -->
 
     <!-- Main container -->
     <div class="vsl-container">
@@ -400,10 +661,9 @@
                 <span class="star-icon">⭐⭐⭐</span>
             </h2>
            
-            <p class="bonus-text">Bonus: Two folders of the mega link of included!</p>
+            <p class="bonus-text">🎁 Bonus: Two folders of the mega link of cp included!</p>
            
-            <a href="https://t.me/full0001?text=END%20MESSAGE%20NOW%20TO%20GET%20ACCESS%20VIP%20GROUP%202025%2F2026%20%E2%9C%85%E2%9D%A4%EF%B8%8F"
-             class="payment-button" target="_blank" rel="noopener">
+            <a href="https://t.me/full0001?text=I%20want%20to%20buy%20a%20Folder" class="payment-button" target="_blank" rel="noopener">
                 GET VIP ACCESS NOW
             </a>
            
@@ -422,20 +682,17 @@
                 </div>
             </div>
 
-           <div class="telegram-container">
-    <a href="https://t.me/full0001?text=SEND%20MESSAGE%20NOW%20TO%20GET%20ACCESS%20VIP%20GROUP%202025%2F2026%20%E2%9C%85%E2%9D%A4%EF%B8%8F"
-       class="telegram-button"
-       target="_blank">
-        <div class="telegram-icon"></div>
-        Contact via Telegram
-    </a>
-</div>
-
+            <div class="telegram-container">
+                <a href="https://t.me/full0001?text=I%20Want%20to%20%20pay%20For%20VIP%20access%202025%2F2026%20%E2%9C%85%E2%9D%A4%EF%B8%8F" class="telegram-button" target="_blank">
+                    <div class="telegram-icon"></div>
+                    Contact via Telegram
+                </a>
+            </div>
         </div>
     </div>
 
     <script>
-        // (todo o JavaScript permanece exatamente o mesmo)
+        // Countdown timer
         let timeLeft = 281;
         function updateCountdown() {
             const minutes = Math.floor(timeLeft / 60);
@@ -451,6 +708,7 @@
         }
         setInterval(updateCountdown, 1000);
 
+        // Live viewers counter
         function updateViewers() {
             const baseCount = 179;
             const variation = Math.floor(Math.random() * 20) - 10;
@@ -459,6 +717,7 @@
         }
         setInterval(updateViewers, 5000);
 
+        // Unmute video on first interaction
         document.addEventListener('click', function() {
             const video = document.getElementById('mainVideo');
             if (video.muted) {
@@ -466,6 +725,7 @@
             }
         }, { once: true });
 
+        // Eye tracking effect
         const videoWrapper = document.querySelector('.video-wrapper');
         const pupils = document.querySelectorAll('.pupil');
 
