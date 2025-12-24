@@ -1,0 +1,622 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* ===== CONTAINER E LOGO ===== */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.imagem-logo {
+    display: block;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+/* ===== TÍTULOS ===== */
+.titule {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.titule h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.sub-title {
+    color: #999999;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* ===== GALLERY CONTAINER ===== */
+.gallery-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* ===== MOBILE: LISTA VERTICAL ===== */
+.mobile-list {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.mobile-list .video-container {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.mobile-list .video-wrapper {
+    height: 400px;
+}
+
+/* ===== DESKTOP: GRID LAYOUT ===== */
+.desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ===== VIDEO CONTAINER ===== */
+.video-container {
+    position: relative;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.desktop-grid .video-container:hover {
+    transform: scale(1.02);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.video-1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== CUSTOM CONTROLS (BOTÕES PLAY/MUTE) ===== */
+.custom-controls {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    left: auto;
+    transform: none;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.control-btn {
+    background-color: rgba(60, 60, 60, 0.4);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s;
+    backdrop-filter: blur(8px);
+}
+
+.control-btn:hover {
+    background-color: rgba(80, 80, 80, 0.5);
+    transform: scale(1.08);
+}
+
+.control-btn.play {
+    background-color: rgba(30, 144, 255, 0.4);
+}
+
+.control-btn.play:hover {
+    background-color: rgba(30, 144, 255, 0.5);
+}
+
+.control-btn.mute {
+    background-color: rgba(220, 53, 69, 0.4);
+}
+
+.control-btn.mute:hover {
+    background-color: rgba(220, 53, 69, 0.5);
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* ===== CARROSSEL DE TEXTO ===== */
+.container-carrousel {
+    width: 100%;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    padding: 15px 0;
+    margin-top: 50px;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    position: relative;
+}
+
+.corrousel-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+}
+
+.corrousel-content span {
+    display: inline-block;
+    padding-right: 50px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.container-carrousel:hover .corrousel-content {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== BOTÃO DE COMPRA ===== */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-button::after {
+    content: ' | $25';
+    margin-left: 1px;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.action-button:hover::before {
+    left: 100%;
+}
+
+.action-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6);
+    background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+}
+
+.action-button:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+}
+
+/* ===== ÍCONES DE PAGAMENTO ===== */
+.icon-buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 40px 0;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.payment-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.payment-icon:hover {
+    transform: translateY(-5px);
+}
+
+.icon-svg {
+    width: 50px;
+    height: 50px;
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+.payment-icon span {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Cores dos ícones */
+.paypal {
+    color: #0070ba;
+}
+
+.card {
+    color: #00d4ff;
+}
+
+.crypto {
+    color: #f7931a;
+}
+
+
+
+/* Hover effects dos ícones */
+.payment-icon:hover .paypal {
+    color: #005ea6;
+    filter: drop-shadow(0 0 10px #0070ba);
+}
+
+.payment-icon:hover .card {
+    color: #00b8e6;
+    filter: drop-shadow(0 0 10px #00d4ff);
+}
+
+.payment-icon:hover .crypto {
+    color: #f7931a;
+    filter: drop-shadow(0 0 10px #f7931a);
+}
+
+.payment-icon:hover .applepay {
+    color: #e6e6e6;
+    filter: drop-shadow(0 0 10px #ffffff);
+}
+
+.payment-icon:hover .cashapp {
+    color: #00c62b;
+    filter: drop-shadow(0 0 10px #00d632);
+}
+
+/* ===== FOOTER ===== */
+.container-footer {
+    width: 100%;
+    background-color: #0a0a0a;
+    border-top: 1px solid #333;
+    margin-top: 60px;
+    padding: 40px 20px;
+}
+
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer h4 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.footer span {
+    display: block;
+    color: #666666;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+/* ===== RESPONSIVE - MOBILE PEQUENO (480px) ===== */
+@media (max-width: 480px) {
+    .action-button {
+        font-size: 18px;
+        padding: 16px 40px;
+        border-radius: 40px;
+    }
+    
+    .action-button::after {
+        content: ' | $25';
+        font-size: 20px;
+        margin-left: 8px;
+    }
+    
+    .icon-buy {
+        gap: 15px;
+    }
+    
+    .icon-svg {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .payment-icon span {
+        font-size: 11px;
+    }
+    
+    .container-footer {
+        padding: 25px 10px;
+    }
+    
+    .footer h4 {
+        font-size: 14px;
+    }
+    
+    .footer span {
+        font-size: 11px;
+    }
+    .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-button::after {
+    content: ' | $25';
+    margin-left: 1px;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+}
+
+/* ===== RESPONSIVE - MOBILE (768px) ===== */
+@media (max-width: 768px) {
+    .desktop-grid {
+        display: none;
+    }
+
+    .mobile-list {
+        display: flex;
+    }
+
+    .mobile-list .video-wrapper {
+        height: 350px;
+    }
+
+    .video-wrapper {
+        height: 300px;
+    }
+
+    .titule h1 {
+        font-size: 24px;
+    }
+
+    .sub-title {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .gallery-container {
+        padding: 0 5px;
+    }
+
+    .control-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .button-container {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .action-button {
+        font-size: 20px;
+        padding: 18px 50px;
+        letter-spacing: 1.5px;
+    }
+
+    .action-button::after {
+        content: ' | $25';
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .container-carrousel {
+        padding: 12px 0;
+        margin-top: 10px;
+    }
+
+    .corrousel-content span {
+        font-size: 14px;
+        padding-right: 40px;
+    }
+
+    .icon-buy {
+        gap: 20px;
+        padding: 15px 10px;
+        margin: 10px 0;
+    }
+    
+    .icon-svg {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .payment-icon span {
+        font-size: 12px;
+    }
+    
+    .container-footer {
+        margin-top: 40px;
+        padding: 30px 15px;
+    }
+    
+    .footer h4 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .footer span {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+    .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-button::after {
+    content: ' | $25';
+    margin-left: 1px;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+}
+
+/* ===== RESPONSIVE - TABLET (769px - 1200px) ===== */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .desktop-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+/* ===== RESPONSIVE - DESKTOP GRANDE (1201px+) ===== */
+@media (min-width: 1201px) {
+    .desktop-grid {
+        max-width: 1800px;
+    }
+}
