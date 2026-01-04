@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store - Coleção 2025</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===== HEADER BANNER ===== */
+.header-banner {
+    background: linear-gradient(135deg, #00d9ff, #0099cc);
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 3px solid #00d9ff;
+}
+
+.header-banner h1 {
+    font-size: clamp(14px, 4vw, 20px);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== MAIN CONTAINER ===== */
+.main-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    border-left: 3px solid #00d9ff;
+    border-right: 3px solid #00d9ff;
+    min-height: 100vh;
+}
+
+/* ===== PRODUCTS SECTION (com bordas laterais) ===== */
+.products-section {
+    background: #000;
+    border-left: 3px solid #00d9ff;
+    border-right: 3px solid #00d9ff;
+    border-top: 3px solid #00d9ff;
+    border-bottom: 3px solid #00d9ff;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+/* ===== COLLECTION HEADER ===== */
+.collection-header {
+    background: linear-gradient(135deg, #000000ff, #dba3bfff);
+    border: 3px solid #00d9ff;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+}
+
+.collection-header h2 {
+    font-size: clamp(18px, 5vw, 26px);
+    font-weight: bold;
+    color: #00d9ff;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1px;
+}
+
+.collection-header .emoji {
+    font-size: clamp(24px, 6vw, 30px);
+}
+
+/* ===== PRODUCT CARD ===== */
+.product-card {
+    background: #000;
+    border: 3px solid #00d9ff;
+    border-radius: 20px;
+    padding: 0;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+    overflow: hidden;
+}
+
+.product-title {
+    background: linear-gradient(135deg, #8a2be2, #ff69b4);
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 3px solid #00d9ff;
+}
+
+.product-title h3 {
+    font-size: clamp(16px, 4.5vw, 20px);
+    font-weight: bold;
+    color: #00d9ff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.product-title .emoji {
+    font-size: clamp(20px, 5vw, 24px);
+}
+
+.product-video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #1a1a1a;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-video-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-placeholder {
+    font-size: clamp(60px, 15vw, 80px);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== FEATURES LIST ===== */
+.features-list {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: clamp(14px, 3.5vw, 16px);
+    font-weight: bold;
+    color: #ecececff;
+    border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+.feature-item:last-child {
+    border-bottom: none;
+}
+
+.feature-icon {
+    font-size: clamp(20px, 5vw, 24px);
+    flex-shrink: 0;
+}
+
+/* ===== PRICE SECTION ===== */
+.price-section {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(255, 105, 180, 0.3));
+    border: 2px solid #00d9ff;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.price-label {
+    font-size: clamp(12px, 3vw, 14px);
+    color: #00d9ff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.price-value {
+    font-size: clamp(28px, 7vw, 36px);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* ===== BUY BUTTON ===== */
+.buy-button {
+    background: linear-gradient(135deg, #ff0000ff, #0099cc);
+    border: none;
+    border-radius: 50px;
+    padding: 18px 35px;
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.4);
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.buy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 217, 255, 0.6);
+}
+
+.buy-button:active {
+    transform: translateY(0);
+}
+
+/* ===== OTIMIZAÇÃO MOBILE ===== */
+@media (max-width: 768px) {
+    .header-banner {
+        padding: 12px 15px;
+    }
+    
+    .products-section {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .collection-header {
+        padding: 1px;
+    }
+    
+    .product-title {
+        padding: 10px 12px;
+    }
+    
+    .features-list {
+        padding: 12px;
+    }
+    
+    .feature-item {
+        gap: 10px;
+        padding: 8px 0;
+    }
+    
+    .price-section {
+        padding: 12px;
+    }
+    
+    .buy-button {
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-section {
+        border-radius: 20px;
+        padding: 10px;
+    }
+    
+    .collection-header,
+    .product-card {
+        border-radius: 15px;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- HEADER BANNER -->
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- PRODUCTS SECTION (com bordas e curvas) -->
+        <div class="products-section">
+            <!-- COLLECTION HEADER -->
+            <div class="collection-header">
+                
+                <h2>SNAPGOD FULL✅</h2>
+            </div>
+
+            <!-- PRODUCT CARD 1 -->
+            <div class="product-card">
+                <!--<div class="product-title">
+                    <h3 style="text-align: left;">1</h3>
+
+                </div>-->
+                <div class="product-video-container">
+             <video class="product-video" controls autoplay muted loop playsinline width="100%" poster="poster2.jpg">
+    <source src="SNAPGOD1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+                
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 2 -->
+            <div class="product-card">
+               
+                <div class="product-video-container">
+             <video class="product-video" controls autoplay muted loop playsinline width="100%" poster="poster2.jpg">
+    <source src="SNAPGOD2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+                </div>
+            </div>
+
+            <!-- FEATURES LIST -->
+            <div class="features-list">
+                <div class="">
+                 
+                    <h3>‼️SNAPGOD FOLDER📁<h3>
+                </div>
+                
+
+<!--<p>✅ MORE THAN 800 VIDEOS<p>
+<p>✅ 15GB IN TOTAL<p>
+<p>✅ MY COMPLETE FOLDER<p>
+
+<p>✅PREMIUM CONTENT<p>-->
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span> OVER 60000 VIDEOS</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">➡️</span>
+                    <span>500GB IN TOTAL</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">➡️</span>
+                    <span>MORE THAN 200 BLACKMAIL VIDEOS</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">➡️</span>
+                    <span>LEAKED SNAP OF REAL GIRLS</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">➡️</span>
+                    <span>MY COMPLETE FOLDER</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span>PREMIUM CONTENT</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚠️</span>
+                    <span>Full edition</span>
+                </div>
+            </div>
+
+            <!-- PRICE SECTION -->
+            <div class="price-section">
+                <div class="price-label">Especial Content</div>
+                <div class="price-value">$25</div>
+            </div>
+
+            <!-- BUY BUTTON -->
+            <button class="buy-button">
+               <i class="fa-brands fa-telegram"></i>
+
+                <span>BUY NOW</span>
+                <span>✓</span>
+            </button>
+        </div>
+    </div>
+</body>
+<script>
+    // Adiciona funcionalidade de reiniciar vídeo ao clicar no play
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('.product-video');
+        
+        videos.forEach(video => {
+            // Quando o vídeo é pausado e o usuário clica no play
+            video.addEventListener('play', function() {
+                // Se o vídeo estava pausado/parado, reinicia do início
+                if (this.currentTime > 0 && this.paused) {
+                    this.currentTime = 0;
+                }
+            });
+
+            // Alternativa: detectar clique nos controles
+            video.addEventListener('click', function() {
+                if (this.paused) {
+                    this.currentTime = 0;
+                    this.play();
+                }
+            });
+        });
+    });
+</script>
+</html>

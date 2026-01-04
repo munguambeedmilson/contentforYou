@@ -1,0 +1,220 @@
+<nav class="navbar-custom">
+    <div class="container">
+        <img src="logoprivate.webp" alt="Logo" class="logo">
+        <ul class="nav-menu">
+            <li>
+                <a href="#" data-page="home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="gallery">
+                    <span>Gallery</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+
+.navbar-custom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 0;
+}
+
+.navbar-custom .container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 20px 12px;
+    gap: 8px;
+}
+
+.navbar-custom .logo {
+    width: 50px;
+    height: auto;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.navbar-custom .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 500px;
+    justify-content: space-between;
+}
+
+.navbar-custom .nav-menu li {
+    flex: 1;
+    text-align: center;
+}
+
+.navbar-custom .nav-menu a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    position: relative;
+}
+
+
+.navbar-custom .nav-menu a::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .nav-menu a[data-page="home"]::before {
+    content: '🏠';
+    font-size: 20px;
+}
+
+
+.navbar-custom .nav-menu a[data-page="gallery"]::before {
+    content: '🖼️';
+    font-size: 20px;
+}
+
+/* Ícone Contact */
+/*.navbar-custom .nav-menu a[data-page="contact"]::before {
+    content: '📧';
+    font-size: 20px;
+}*/
+
+/* Estado hover */
+.navbar-custom .nav-menu a:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.navbar-custom .nav-menu a:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.navbar-custom .nav-menu a.active {
+    color: #ff0000;
+    background: rgba(255, 0, 0, 0.15);
+}
+
+.navbar-custom .nav-menu a.active::before {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #ff0000);
+}
+
+/* Animação de clique */
+.navbar-custom .nav-menu a:active {
+    transform: scale(0.95);
+}
+
+
+body {
+    padding-bottom: 90px; /* Altura da navbar */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .navbar-custom .container {
+        padding: 6px 15px 10px;
+        gap: 6px;
+    }
+    
+    .navbar-custom .logo {
+        width: 40px;
+    }
+    
+    .navbar-custom .nav-menu {
+        max-width: 100%;
+    }
+    
+    .navbar-custom .nav-menu a {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    
+    .navbar-custom .nav-menu a::before {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    
+    body {
+        padding-bottom: 80px;
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar-custom .container {
+        max-width: 600px;
+    }
+    
+    .navbar-custom .nav-menu {
+        max-width: 400px;
+        gap: 10px;
+    }
+    
+    .navbar-custom .nav-menu a {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+}
+
+
+.navbar-custom .nav-menu a[data-page="home"]::before {
+    content: '\f015';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+.navbar-custom .nav-menu a[data-page="gallery"]::before {
+    content: '\f03e';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+.navbar-custom .nav-menu a[data-page="contact"]::before {
+    content: '\f0e0';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+</style>

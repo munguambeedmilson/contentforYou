@@ -194,9 +194,61 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log(`Vídeo desktop ${index + 1} inicializado`);
     });
 });
+// ===== SISTEMA DE VERIFICAÇÃO DE IDADE =====
+  function handleExit() {
+    window.location.href = 'https://www.google.com';
+}
 
+function handleConfirm() {
+    sessionStorage.setItem('ageVerified', 'true');
+    document.getElementById('ageVerificationModal').classList.add('hidden');
+}
+
+// Verifica se já foi confirmado ao carregar a página
+window.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('ageVerified') === 'true') {
+        document.getElementById('ageVerificationModal').classList.add('hidden');
+    }
+});
 // ==========================================
 // LOG PARA DEBUG (PODE REMOVER EM PRODUÇÃO)
 // ==========================================
+// ===== SISTEMA DE VERIFICAÇÃO DE IDADE =====
+function handleExit() {
+    window.location.href = 'https://www.google.com';
+}
 
+function handleConfirm() {
+    sessionStorage.setItem('ageVerified', 'true');
+    document.getElementById('ageVerificationModal').classList.add('hidden');
+}
+
+// Verifica se já foi confirmado
+window.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('ageVerified') === 'true') {
+        document.getElementById('ageVerificationModal').classList.add('hidden');
+    }
+});
+
+// ===== ATUALIZA INDICADORES NO MOBILE =====
+if (window.innerWidth <= 768) {
+    const scroller = document.getElementById('videoScroller');
+    const dots = document.querySelectorAll('.dot');
+
+    if (scroller && dots.length > 0) {
+        scroller.addEventListener('scroll', function() {
+            const scrollLeft = scroller.scrollLeft;
+            const itemWidth = scroller.querySelector('.video-wrapper').offsetWidth + 15;
+            const currentIndex = Math.round(scrollLeft / itemWidth);
+            
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+    }
+}
 console.log('Script carregado com sucesso! ✅');

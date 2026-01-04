@@ -1,0 +1,399 @@
+<!-- SEÇÃO DE GALERIA DE PRODUTOS -->
+<div class="product-gallery-section">
+    <div class="product-header">
+        <span class="product-category">Teenagers Collection</span>
+        <h2 class="product-title">IVANKA</h2>
+        <div class="product-info">
+            <span class="info-item">📦 53 Archives</span>
+        </div>
+    </div>
+
+    <div class="gallery-carousel">
+        <div class="carousel-images" id="productCarousel">
+            <div class="gallery-item active">
+                <img src="Imagem-1.webp" alt="Produto 1">
+            </div>
+            <div class="gallery-item">
+                <img src="Imagem-2.webp" alt="Produto 2">
+            </div>
+            <div class="gallery-item">
+                <img src="produto-3.jpg" alt="Produto 3">
+            </div>
+            <div class="gallery-item">
+                <img src="produto-4.jpg" alt="Produto 4">
+            </div>
+            <div class="gallery-item">
+                <img src="produto-5.jpg" alt="Produto 5">
+            </div>
+            <div class="gallery-item">
+                <img src="produto-6.jpg" alt="Produto 6">
+            </div>
+        </div>
+
+        <!-- Seta para direita -->
+        <button class="carousel-arrow" id="nextBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <path d="M9 18l6-6-6-6"/>
+            </svg>
+        </button>
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ===== PRODUCT GALLERY SECTION ===== */
+.product-gallery-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 0, 20, 0.9) 100%);
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-gallery-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ===== PRODUCT HEADER ===== */
+.product-header {
+    text-align: center;
+    padding: 0 20px 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.product-category {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ff00ff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 10px 0 15px;
+    text-shadow: 
+        0 0 20px rgba(255, 0, 255, 0.8),
+        0 0 40px rgba(255, 0, 255, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.5);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 20px rgba(255, 0, 255, 0.8),
+            0 0 40px rgba(255, 0, 255, 0.5),
+            0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        text-shadow: 
+            0 0 30px rgba(255, 0, 255, 1),
+            0 0 60px rgba(255, 0, 255, 0.7),
+            0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.product-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 0, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+/* ===== GALLERY CAROUSEL ===== */
+.gallery-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 40px rgba(255, 0, 255, 0.3),
+        0 0 0 2px rgba(255, 0, 255, 0.2);
+}
+
+.gallery-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.gallery-item.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.gallery-item.prev {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== SETA DE NAVEGAÇÃO ===== */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.9), rgba(200, 0, 200, 0.9));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 
+        0 4px 15px rgba(255, 0, 255, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+    background: linear-gradient(135deg, rgba(255, 0, 255, 1), rgba(220, 0, 220, 1));
+    box-shadow: 0 6px 25px rgba(255, 0, 255, 0.7);
+}
+
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-arrow svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* ===== INDICADORES ===== */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.indicator.active {
+    width: 24px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #ff00ff, #cc00cc);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+}
+
+/* ===== RESPONSIVE - MOBILE ===== */
+@media (max-width: 768px) {
+    .product-gallery-section {
+        padding: 25px 0;
+    }
+
+    .product-header {
+        padding: 0 15px 20px;
+    }
+
+    .product-title {
+        font-size: 42px;
+        letter-spacing: 3px;
+    }
+
+    .gallery-carousel {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .carousel-arrow {
+        width: 45px;
+        height: 45px;
+        right: 20px;
+    }
+
+    .carousel-arrow svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .product-category {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    .info-item {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        right: 15px;
+    }
+
+    .carousel-arrow svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .carousel-indicators {
+        gap: 6px;
+        margin-top: 15px;
+    }
+
+    .indicator {
+        width: 6px;
+        height: 6px;
+    }
+
+    .indicator.active {
+        width: 20px;
+    }
+}
+</style>
+
+<script>
+// ===== CAROUSEL FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('productCarousel');
+    const items = carousel.querySelectorAll('.gallery-item');
+    const indicators = document.querySelectorAll('.indicator');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentIndex = 0;
+    const totalItems = items.length;
+
+    function showSlide(index) {
+        // Remove classes de todos os itens
+        items.forEach((item, i) => {
+            item.classList.remove('active', 'prev');
+            if (i < index) {
+                item.classList.add('prev');
+            }
+        });
+
+        // Adiciona classe active ao item atual
+        items[index].classList.add('active');
+
+        // Atualiza indicadores
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        showSlide(currentIndex);
+    }
+
+    // Evento de clique na seta
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Clique nos indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            showSlide(currentIndex);
+        });
+    });
+
+    // Swipe touch para mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchStartX - touchEndX > 50) {
+            // Swipe left (próximo)
+            nextSlide();
+        } else if (touchEndX - touchStartX > 50) {
+            // Swipe right (anterior)
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            showSlide(currentIndex);
+        }
+    }
+
+    // Auto-play (opcional - remova se não quiser)
+    // setInterval(nextSlide, 4000);
+});
+</script>

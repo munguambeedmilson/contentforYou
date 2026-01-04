@@ -1,0 +1,319 @@
+<!-- SEÇÃO: TEENAGERS LEAKED -->
+<section class="collection-section">
+    <div class="section-header">
+        <h2 class="section-title">Summer Collection</h2>
+    </div>
+
+    <div class="collection-scroll">
+        <div class="collection-grid">
+            <!-- Card 1 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="Imagem-1.webp" alt="Produto 1">
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="Imagem-2.webp" alt="Produto 2">
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="produto-3.jpg" alt="Produto 3">
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="produto-4.jpg" alt="Produto 4">
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="produto-5.jpg" alt="Produto 5">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO: WINTER COLLECTION -->
+<section class="collection-section">
+    <div class="section-header">
+        <h2 class="section-title">Winter Collection</h2>
+    </div>
+
+    <div class="collection-scroll">
+        <div class="collection-grid">
+            <!-- Card 1 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="winter-1.jpg" alt="Produto 1">
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="collection-card">
+                <div class="card-image">
+                    <img src="winter-2.jpg" alt="Produto 2">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ===== COLLECTION SECTION ===== */
+.collection-section {
+    padding: 30px 0;
+    background: #000;
+    position: relative;
+}
+
+.section-header {
+    padding: 0 20px 20px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+/* ===== SCROLL CONTAINER ===== */
+.collection-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 20px 10px;
+}
+
+.collection-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* ===== GRID ===== */
+.collection-grid {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+}
+
+/* ===== COLLECTION CARD - SEM BORDAS ===== */
+.collection-card {
+    flex: 0 0 auto;
+    width: 320px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+    /* FORÇA REMOÇÃO DE TODAS AS BORDAS */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Remove bordas em TODOS os estados */
+.collection-card,
+.collection-card:hover,
+.collection-card:focus,
+.collection-card:active,
+.collection-card:focus-visible,
+.collection-card:focus-within {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.collection-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===== CARD IMAGE - SEM BORDAS ===== */
+.card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a1a;
+    
+    /* Sombra suave padrão */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.3s ease;
+    
+    /* FORÇA REMOÇÃO DE BORDAS */
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove bordas da imagem em TODOS os estados */
+.card-image,
+.card-image:hover,
+.card-image:focus,
+.card-image:active {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Hover - apenas sombra mais forte */
+.collection-card:hover .card-image {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Selecionado - borda fina (APENAS ao clicar) */
+.collection-card.selected .card-image {
+    box-shadow: 
+        0 0 0 2px #ff00ff,
+        0 8px 25px rgba(255, 0, 255, 0.3) !important;
+}
+
+/* ===== IMAGEM ===== */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    
+    /* FORÇA REMOÇÃO DE BORDAS */
+    outline: none !important;
+    border: none !important;
+}
+
+.collection-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* ===== REMOÇÃO GLOBAL DE BORDAS/OUTLINES ===== */
+.collection-section *,
+.collection-section *::before,
+.collection-section *::after {
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+}
+
+.collection-section *:focus,
+.collection-section *:focus-visible,
+.collection-section *:active,
+.collection-section *:focus-within {
+    outline: none !important;
+    border: none !important;
+}
+
+/* Remove qualquer borda que possa vir de outros CSS */
+.collection-section button,
+.collection-section a,
+.collection-section img,
+.collection-section div {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    border: 0 !important;
+}
+
+/* ===== RESPONSIVE - MOBILE ===== */
+@media (max-width: 768px) {
+    .collection-section {
+        padding: 25px 0;
+    }
+
+    .section-header {
+        padding: 0 15px 15px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .collection-scroll {
+        padding: 0 15px 10px;
+    }
+
+    .collection-grid {
+        gap: 12px;
+    }
+
+    .collection-card {
+        width: 280px;
+    }
+
+    .card-image {
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .collection-section {
+        padding: 20px 0;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .collection-scroll {
+        padding: 0 10px 8px;
+    }
+
+    .collection-card {
+        width: 260px;
+    }
+}
+
+/* ===== SCROLL SNAP (UMA POR VEZ NO MOBILE) ===== */
+@media (max-width: 768px) {
+    .collection-scroll {
+        scroll-snap-type: x mandatory;
+        scroll-padding: 15px;
+    }
+
+    .collection-card {
+        scroll-snap-align: start;
+    }
+}
+
+/* ===== EFEITO DE CLIQUE ===== */
+.collection-card:active {
+    transform: scale(0.98);
+}
+</style>
+
+<script>
+// Script para adicionar borda roxa APENAS ao clicar
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.collection-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove seleção de todos os cards
+            cards.forEach(c => c.classList.remove('selected'));
+            
+            // Adiciona seleção ao card clicado
+            this.classList.add('selected');
+            
+            console.log('Produto selecionado');
+        });
+    });
+    
+    // Remove seleção ao clicar fora dos cards
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.collection-card')) {
+            cards.forEach(c => c.classList.remove('selected'));
+        }
+    });
+});
+</script>
