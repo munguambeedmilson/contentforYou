@@ -2,7 +2,6 @@ class LeaksApp {
     constructor() {
         this.currentPage = 'home';
         this.currentSection = null;
-        this.isLoading = false;
         this.ageVerified = false;
         
         // Definir componentes
@@ -24,7 +23,6 @@ class LeaksApp {
             videosPreview: 'pages/home/videos-preview.html',
             TeenagersLeaked: 'pages/home/Teenagers-leaked.html',
             SnapGood: 'pages/home/SnapGood.html',
-
             carouselText: 'pages/home/carousel-text.html',
             ctaSection: 'pages/home/cta-section.html',
             
@@ -36,11 +34,9 @@ class LeaksApp {
         // Definir páginas modulares
         this.modularPages = {
             home: [
-                 'Teens',
+                'Teens',
                 'heroSection',
                 'BLACK',
-             
-                // 'T33nsLeaks',
                 'EnglishTeens',
                 'Lizzy',
                 'Ivakah',
@@ -60,9 +56,6 @@ class LeaksApp {
 
     async init() {
         try {
-            // Criar loading overlay
-            this.createLoadingOverlay();
-            
             // Verificar se idade já foi verificada
             this.checkAgeVerification();
             
@@ -121,8 +114,6 @@ class LeaksApp {
     }
 
     async loadApp() {
-        this.showLoading('Carregando...');
-        
         // Carregar componentes fixos
         await this.loadComponent('navbar', 'navbar-container');
         await this.loadComponent('footer', 'footer-container');
@@ -133,138 +124,6 @@ class LeaksApp {
         // Setup navegação
         this.setupNavigation();
         this.setupURLManagement();
-        
-        this.hideLoading();
-    }
-
-    createLoadingOverlay() {
-        if (!document.getElementById('loading-overlay')) {
-            const loadingHTML = `
-                <div id="loading-overlay" class="loading-overlay" style="display: none;">
-                    <div class="loading-content">
-                        <div class="loading-spinner">
-                            <div class="spinner-ring"></div>
-                            <div class="spinner-ring"></div>
-                            <div class="spinner-ring"></div>
-                        </div>
-                        <div class="loading-text">Loading...</div>
-                    </div>
-                </div>
-            `;
-            
-            document.body.insertAdjacentHTML('beforeend', loadingHTML);
-            this.addLoadingStyles();
-        }
-    }
-
-    addLoadingStyles() {
-        if (!document.getElementById('loading-styles')) {
-            const styles = `
-                <style id="loading-styles">
-                .loading-overlay {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.95);
-                    backdrop-filter: blur(10px);
-                    z-index: 99999;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: opacity 0.3s ease, visibility 0.3s ease;
-                }
-
-                .loading-overlay.show {
-                    opacity: 1;
-                    visibility: visible;
-                }
-
-                .loading-content {
-                    text-align: center;
-                    padding: 2rem;
-                }
-
-                .loading-spinner {
-                    position: relative;
-                    display: inline-block;
-                    width: 60px;
-                    height: 60px;
-                    margin-bottom: 1rem;
-                }
-
-                .spinner-ring {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    border: 3px solid transparent;
-                    border-top: 3px solid #ff0000;
-                    border-radius: 50%;
-                    animation: spin 1.2s linear infinite;
-                }
-
-                .spinner-ring:nth-child(2) {
-                    animation-delay: -0.4s;
-                    border-top-color: rgba(255, 0, 0, 0.6);
-                }
-
-                .spinner-ring:nth-child(3) {
-                    animation-delay: -0.8s;
-                    border-top-color: rgba(255, 0, 0, 0.4);
-                }
-
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-
-                .loading-text {
-                    font-size: 1.1rem;
-                    font-weight: 500;
-                    color: white;
-                    animation: pulse 1.5s ease-in-out infinite;
-                }
-
-                @keyframes pulse {
-                    0%, 100% { opacity: 0.7; }
-                    50% { opacity: 1; }
-                }
-                </style>
-            `;
-            
-            document.head.insertAdjacentHTML('beforeend', styles);
-        }
-    }
-
-    showLoading(message = 'Loading...') {
-        if (this.isLoading) return;
-        
-        this.isLoading = true;
-        const overlay = document.getElementById('loading-overlay');
-        const text = overlay?.querySelector('.loading-text');
-        
-        if (overlay) {
-            if (text) text.textContent = message;
-            overlay.style.display = 'flex';
-            setTimeout(() => overlay.classList.add('show'), 10);
-        }
-    }
-
-    hideLoading() {
-        this.isLoading = false;
-        const overlay = document.getElementById('loading-overlay');
-        
-        if (overlay) {
-            overlay.classList.remove('show');
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 300);
-        }
     }
 
     async loadComponent(componentName, containerId) {
@@ -290,21 +149,17 @@ class LeaksApp {
         
         if (page && this.modularPages[page]) {
             if (section) {
-                await this.loadPageAndScrollToSection(page, section, false, false);
+                await this.loadPageAndScrollToSection(page, section, false);
             } else {
-                await this.loadPage(page, false, false);
+                await this.loadPage(page, false);
             }
         } else {
-            await this.loadPage('home', false, false);
+            await this.loadPage('home', false);
         }
     }
 
-    async loadPage(pageName, updateHistory = true, showLoadingOverlay = true) {
+    async loadPage(pageName, updateHistory = true) {
         try {
-            if (showLoadingOverlay) {
-                this.showLoading(`Loading ${pageName}...`);
-            }
-            
             const mainContainer = document.getElementById('main-content');
             
             if (mainContainer) {
@@ -321,13 +176,8 @@ class LeaksApp {
                 }
             }
             
-            if (showLoadingOverlay) {
-                this.hideLoading();
-            }
-            
         } catch (error) {
             console.error(`Erro ao carregar página ${pageName}:`, error);
-            if (showLoadingOverlay) this.hideLoading();
             this.showError(`Erro ao carregar a página ${pageName}`);
         }
     }
@@ -363,13 +213,9 @@ class LeaksApp {
         }
     }
 
-    async loadPageAndScrollToSection(pageName, sectionId, updateHistory = true, showLoadingOverlay = true) {
+    async loadPageAndScrollToSection(pageName, sectionId, updateHistory = true) {
         try {
-            if (showLoadingOverlay) {
-                this.showLoading(`Loading ${pageName}...`);
-            }
-            
-            await this.loadPage(pageName, false, false);
+            await this.loadPage(pageName, false);
             
             if (updateHistory) {
                 this.updateURL(pageName, sectionId);
@@ -383,15 +229,10 @@ class LeaksApp {
                         block: 'start'
                     });
                 }
-                
-                if (showLoadingOverlay) {
-                    this.hideLoading();
-                }
             }, 700);
             
         } catch (error) {
             console.error(`Erro ao carregar página ${pageName}:`, error);
-            if (showLoadingOverlay) this.hideLoading();
         }
     }
 
@@ -404,9 +245,9 @@ class LeaksApp {
                 const section = link.getAttribute('data-section');
                 
                 if (section) {
-                    this.loadPageAndScrollToSection(pageName, section, true, true);
+                    this.loadPageAndScrollToSection(pageName, section, true);
                 } else {
-                    this.loadPage(pageName, true, true);
+                    this.loadPage(pageName, true);
                 }
             }
         });
@@ -417,9 +258,9 @@ class LeaksApp {
             const state = event.state;
             if (state && state.page) {
                 if (state.section) {
-                    this.loadPageAndScrollToSection(state.page, state.section, false, true);
+                    this.loadPageAndScrollToSection(state.page, state.section, false);
                 } else {
-                    this.loadPage(state.page, false, true);
+                    this.loadPage(state.page, false);
                 }
             } else {
                 this.loadPageFromURL();
