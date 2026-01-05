@@ -786,7 +786,13 @@ video.paused ~ .watching-eyes {
         font-size: 16px;
         line-height: 1.5;
     }
-    
+    .buy-button,
+.buy-button:hover,
+.buy-button:focus,
+.buy-button:active {
+    text-decoration: none;
+}
+
     .footer span {
         font-size: 12px;
         margin-top: 15px;

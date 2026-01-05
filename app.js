@@ -92,10 +92,10 @@ class LeaksApp {
             <div id="ageVerificationModal">
                 <div class="verification-container">
                     <div class="verification-icon"></div>
-                    <h1>Este site contém conteúdo adulto. Você deve ter pelo menos 18 anos para prosseguir.</h1>
-                    <p>Ao clicar "Tenho mais de 18", você confirma que é maior de idade para visualizar este conteúdo na sua região.</p>
-                    <button class="verification-button verification-button-exit" onclick="leaksApp.handleExit()">SAIR</button>
-                    <button class="verification-button verification-button-confirm" onclick="leaksApp.handleConfirm()">TENHO MAIS DE 18</button>
+                    <h1>This site contains adult content. You must be at least 18 years old to continue.</h1>
+                    <p>By clicking "I am over 18," you confirm that you are legally allowed to view this content in your region.</p>
+                    <button class="verification-button verification-button-exit" onclick="leaksApp.handleExit()">EXIT</button>
+                    <button class="verification-button verification-button-confirm" onclick="leaksApp.handleConfirm()">I AM OVER 18</button>
                 </div>
             </div>
         `;
