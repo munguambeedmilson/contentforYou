@@ -25,6 +25,7 @@ class LeaksApp {
             SnapGood: 'pages/home/SnapGood.html',
             carouselText: 'pages/home/carousel-text.html',
             ctaSection: 'pages/home/cta-section.html',
+            EXCLUSIVECP: 'pages/home/EXCLUSIVECP.html',
             
             // Outras páginas
             fullGallery: 'pages/gallery/full-gallery.html',
@@ -42,8 +43,10 @@ class LeaksApp {
                 'Ivakah',
                 'SnapGood',
                 'Desiree',
+                 'EXCLUSIVECP',
                 'videosPreview',
                 'TeenagersLeaked',
+               
                 'carouselText',
                 'ctaSection'
             ],
